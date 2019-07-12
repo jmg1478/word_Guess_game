@@ -7,7 +7,7 @@ $(document).ready(function () {
     // }
 
     // var and rules
-    const game = ["Goku", "Vegeta", "Krillin", "Bulma", "Piccolo"];
+    const game = ["Goku", "Vegeta", "Krillin", "Bulma", "Piccolo", "Cell", "Gohan"];
     const choice = Math.floor(Math.random() * 5);
     const answer = game[choice];
     // var myLength = game.length;
@@ -68,7 +68,7 @@ $(document).ready(function () {
             // reset game? or do whatever.
             $("#guesses").text("YOU WIN!!");
             return;
-            wins++;
+           
         }
 
        if (attemptsLeft === 0) {
