@@ -1,25 +1,68 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Dragon Ball Z Word Guessing Game!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman Game</title>
+
+    <!-- BootStrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
 </head>
+<body>
+     
+ <div class="container">
+<!-- Jumbotron for head and eye catcher -->
+        <div class="jumbotron">
+                <h1 class="display-4">Dragon Ball Z Word Game!</h1>
+                <p class="lead">Guess The Character!</p>
+                <hr class="my-4">
+        </div>
+<!-- card classes for word, guesses wins and loss -->
+        <div class="card">
+                <div class="card-header">
+                  Character To Guess!
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" id="wordToGuess">_ _ _ _ _ _ _ _</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+              <br>
+              <div class="card">
+                    <div class="card-body">
+                      Wrong Guessed: <span id="wrongGuesses"></span>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="card">
+                        <div class="card-body">
+                          Guesses left: <span id="numGuesses"></span>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="card">
+                            <div class="card-body">
+                              Win Counter: <span id="winCounter"></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                                <div class="card-body">
+                                 Loss Counter: <span id="lossCounter"></span>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                    <div class="card-body">
+                                      This is some text within a card body.
+                                    </div>
+                                  </div>
 
-<body background-image: scr="C:\Users\johna\Desktop\word_guess_game\assets\images\dragon-ball-z-background.png"  alt="dragonBallzLogo" width= "100%">
-<h1>Dragon Ball Z Word Guessing Game!</h1>
-<h2 id="game">test</h2>
-<h2 id="guess"></h2>
-<h2 id="guesses"></h2>
+ </div>
 
-
-
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+ <!-- link to java -->
+ <script src="game.js"></script>
 </body>
-
 </html>
