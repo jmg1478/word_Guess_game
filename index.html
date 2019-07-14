@@ -1,68 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Hangman Game</title>
 
     <!-- BootStrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-</head>
-<body>
-     
- <div class="container">
-<!-- Jumbotron for head and eye catcher -->
-        <div class="jumbotron">
-                <h1 class="display-4">Dragon Ball Z Word Game!</h1>
-                <p class="lead">Guess The Character!</p>
-                <hr class="my-4">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+<div class="p-3 mb-2 bg-dark text-white">
+      <div class="container">
+      <div class="p-3 mb-2 bg-dark text-white">
+    <div class="card" style="width: 67.5rem;">
+      <img src="C:\Users\johna\Desktop\word_guess_game\assets\images\dragon-ball-z-background.png" class="card-img-top" alt="...">
+    </div>
+      </div>
+    <div class="container">
+      <!-- card classes for word, guesses wins and loss -->
+      <div class="card">
+        <div class="card-header"><a href="#" class="text-dark">
+          Character To Guess!</a>
         </div>
-<!-- card classes for word, guesses wins and loss -->
-        <div class="card">
-                <div class="card-header">
-                  Character To Guess!
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title" id="wordToGuess">_ _ _ _ _ _ _ _</h5>
-                  <p class="card-text"></p>
-                </div>
-              </div>
-              <br>
-              <div class="card">
-                    <div class="card-body">
-                      Wrong Guessed: <span id="wrongGuesses"></span>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="card">
-                        <div class="card-body">
-                          Guesses left: <span id="numGuesses"></span>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                            <div class="card-body">
-                              Win Counter: <span id="winCounter"></span>
-                            </div>
-                          </div>
-                          <br>
-                          <div class="card">
-                                <div class="card-body">
-                                 Loss Counter: <span id="lossCounter"></span>
-                                </div>
-                              </div>
-                              <br>
-                              <div class="card">
-                                    <div class="card-body">
-                                      This is some text within a card body.
-                                    </div>
-                                  </div>
+        <div class="card-body"><a href="#" class="text-dark">
+          <h5 class="card-title" id="wordToGuess">_ _ _ _ _ _ _ _</h5></a>
+          <p class="card-text"></p>
+        </div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-body"><a href="#" class="text-dark">
+          Wrong Guessed: <span id="wrongGuesses"></span></a>
+        </div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-body"><a href="#" class="text-dark">
+          Guesses left: <span id="guessesLeft"></span></a>
+        </div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-body"><a href="#" class="text-dark">Win Counter: <span id="winCounter"></span></a></div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-body"><a href="#" class="text-dark">Loss Counter: <span id="lossCounter"></span></a>
+          
+        </div>
+      </div>
+      <br />
+    </div>
+      </div>
+</div>
 
- </div>
 
- <!-- link to java -->
- <script src="game.js"></script>
-</body>
+    <!-- link to java -->
+    <script src="game.js">
+  
+    </script>
+  </body>
 </html>

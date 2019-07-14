@@ -1,130 +1,164 @@
-// alert("Are You Ready To Rumble!!??");
-// Global Var
-// =================================================================
-// array
-var wordOptions = ["goku", "vegeta", "krillin", "bulma", "gohan", "piccolo", "trunks"]
-var selectedWord = "";
-var lettersinWord = [];
-var numBlank = 0;
-var blanksAndSuccesses = [];
-var wrongLetters = [];
-var isLetterInWord = false;
+  alert("Are You Ready To Rumble!!??");
+      // Global Var
+      // =================================================================
+      // array
+const constants = {
+    GUESSES_LEFT: 9,
+  };
 
-// game counters
-var winCounter = 0;
-var lossCounter = 0;
-var guessesLeft = 9;
+  var wordOptions = [
+    "goku",
+    "vegeta",
+    "krillin",
+    "bulma",
+    "gohan",
+    "piccolo",
+    "trunks",
+  ];
+  var selectedWord = "";
+  var lettersinWord = [];
+  var selectedWordLength = 0;
+  var blanksAndSuccesses = [];
+  var wrongLetters = [];
 
-// Functions 
-// ===================================================================
+  // game counters
+  var winCounter = 0;
+  var lossCounter = 0;
+  var guessesLeft = constants.GUESSES_LEFT;
 
-function wordPick() {
-    selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+  // Functions
+  // ===================================================================
+
+  function selectRandomWord() {
+    selectedWord =
+      wordOptions[Math.floor(Math.random() * wordOptions.length)];
     lettersinWord = selectedWord.split("");
-    numBlank = lettersinWord.length;
+    selectedWordLength = lettersinWord.length;
 
     console.log(selectedWord);
-}
+  }
 
-function startGame() {
+  function resetInputs() {
+    blanksAndSuccesses = [];
+    wrongLetters = [];
+    guessesLeft = constants.GUESSES_LEFT;
+  }
+
+  function startGame() {
     // selectedWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
     // lettersinWord = selectedWord.split("");
-    // numBlank = lettersinWord.length;
+    // selectedWordLength = lettersinWord.length;
+
+    resetInputs();
+    selectRandomWord();
 
     // populate blanks for letters
-    for (var i = 0; i < numBlank; i++) {
-        blanksAndSuccesses.push("_")
+    for (var i = 0; i < selectedWordLength; i++) {
+      blanksAndSuccesses.push("_");
     }
     //adding JS to HTML
-    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
-    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById(
+      "wordToGuess"
+    ).innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("guessesLeft").innerHTML = guessesLeft;
     document.getElementById("winCounter").innerHTML = winCounter;
     document.getElementById("lossCounter").innerHTML = lossCounter;
 
-    // resets
-    guessesLeft = 9;
-    wrongLetters = [];
-    blanksAndSuccesses = [];
-
     // consolelog
-    console.log(selectedWord);
+    console.log("selectedWord", selectedWord);
     console.log(lettersinWord);
-    console.log(numBlank);
+    console.log(selectedWordLength);
     console.log(blanksAndSuccesses);
-}
+  }
 
-function checkLetters(letter) {
-    //  check if letter is in 
+  function checkLetters(letter) {
+    //  check if letter is in
     // alert(letter);
-    
+    let isLetterInWord = false;
 
-    for (var i = 0; i < numBlank; i++) {
-        if (selectedWord[i] == letter) {
-            isLetterInWord = true;
-            // alert("Letter Found");
-        }
+    for (var i = 0; i < selectedWordLength; i++) {
+      if (selectedWord[i] === letter) {
+        isLetterInWord = true;
+        // alert("Letter Found");
+      }
     }
     // where letter is and populate
     if (isLetterInWord) {
-        for (var i = 0; i < numBlank; i++) {
-            if (selectedWord[i] == letter) {
-                blanksAndSuccesses[i] = letter;
-                document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
-            }
+      for (var i = 0; i < selectedWordLength; i++) {
+        if (selectedWord[i] == letter) {
+          blanksAndSuccesses[i] = letter;
+          document.getElementById(
+            "wordToGuess"
+          ).innerHTML = blanksAndSuccesses.join(" ");
         }
+      }
     } else {
-        wrongLetters.push(letter);
-        numGuesses--;
+      console.log("wrong letter", letter, guessesLeft);
+      wrongLetters.push(letter);
+      guessesLeft--;
     }
+
+    // this is weird - the naming should be more like checkForWin
+    roundComplete();
 
     // test
-    console.log(blanksAndSuccesses);
+    console.log({ blanksAndSuccesses });
+  }
 
-   
-}
-
-function roundComplete() {
-    console.log("Win Count: " + winCounter + " | Loss Count: " + lossCounter + " | Guesses Left" + guessesLeft);
-    // update HTML to reflect
-    document.getElementById("numGuesses").innerHTML = guessesLeft;
-    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
-    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+  function roundComplete() {
     // check in win
-    if (isLetterInWord.toString() == blanksAndSuccesses.toString()) {
-        winCount++;
-        alert("You Win!!");
-        // update win in HTML
-        document.getElementById("winCounter").innerHTML = winCounter;
+    if (blanksAndSuccesses.join("") === selectedWord) {
+      winCounter++;
+      alert("You Win!!");
+      // update win in HTML
+      document.getElementById("winCounter").innerHTML = winCounter;
 
-        startGame();
-        roundComplete();
+      startGame();
     }
     // check is loss
-    else if (numGuesses) {
-        lossCounter++;
-        alert("You Lost!");
+    else if (guessesLeft === 0) {
+      lossCounter++;
+      alert("You Lost!");
 
-        // update HTML
-        document.getElementById("lossCounter").innerHTML = lossCounter;
-        startGame();
-        roundComplete();
+      // update HTML
+      document.getElementById("lossCounter").innerHTML = lossCounter;
+
+      startGame();
     }
-}
 
+    console.log(
+      "Win Count: " +
+        winCounter +
+        " | Loss Count: " +
+        lossCounter +
+        " | Guesses Left" +
+        guessesLeft
+    );
+    // update HTML to reflect
+    document.getElementById("guessesLeft").innerHTML = guessesLeft;
+    document.getElementById(
+      "wordToGuess"
+    ).innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(
+      " "
+    );
+  }
 
-// Main process 
-// ======================================================================
+  // Main process
+  // ======================================================================
 
-startGame();
-wordPick();
+  startGame();
 
+  // keyclicks
+  document.onkeyup = function(event) {
+    // check for actual letters only so misc keys don't count
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+      checkLetters(letterGuessed);
+    }
 
-// keyclicks
-document.onkeyup = function (event) {
-    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    checkLetters(letterGuessed);
     // alert(letterGuessed);
     console.log(letterGuessed);
 
     // roundComplete();
-}
+  };
