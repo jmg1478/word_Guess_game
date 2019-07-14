@@ -109,6 +109,7 @@ const constants = {
     // check in win
     if (blanksAndSuccesses.join("") === selectedWord) {
       winCounter++;
+      document.getElementById('winMusic').play();
       alert("You Win!!");
       // update win in HTML
       document.getElementById("winCounter").innerHTML = winCounter;
